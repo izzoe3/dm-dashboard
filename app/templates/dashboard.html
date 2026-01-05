@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Marketing Performance</title>
+  <title>Digital Marketing Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -38,4 +38,64 @@
   <!-- Filters -->
   <section class="filters">
     <select>
-      <o
+      <option>Date Range</option>
+      <option>Last 7 Days</option>
+      <option>Last 30 Days</option>
+    </select>
+
+    <select>
+      <option>Platform</option>
+      <option>Meta</option>
+      <option>Google</option>
+    </select>
+
+    <select>
+      <option>Campaign</option>
+    </select>
+  </section>
+
+  <!-- Charts -->
+  <section class="charts">
+    <div class="chart-placeholder">
+      Spend vs Leads
+    </div>
+    <div class="chart-placeholder">
+      CPL Over Time
+    </div>
+  </section>
+
+  <!-- Table -->
+  <section class="table-section">
+    <h2>Campaign Performance</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Campaign</th>
+          <th>Platform</th>
+          <th>Spend</th>
+          <th>Leads</th>
+          <th>CPL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Foundation in Business</td>
+          <td>Google</td>
+          <td>RM 3,200</td>
+          <td>82</td>
+          <td>RM 39.02</td>
+        </tr>
+        <tr>
+          <td>Foundation in Science</td>
+          <td>Meta</td>
+          <td>RM 2,100</td>
+          <td>54</td>
+          <td>RM 38.89</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>
