@@ -56,13 +56,15 @@
 
   <!-- Charts -->
   <section class="charts">
-    <div class="chart-placeholder">
-      Spend vs Leads
-    </div>
-    <div class="chart-placeholder">
-      CPL Over Time
-    </div>
-  </section>
+  <div class="chart-card">
+    <canvas id="spendLeadsChart"></canvas>
+  </div>
+
+  <div class="chart-card">
+    <canvas id="cplChart"></canvas>
+  </div>
+</section>
+
 
   <!-- Table -->
   <section class="table-section">
@@ -96,6 +98,66 @@
       </tbody>
     </table>
   </section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  // Dummy data (will come from Flask later)
+  const labels = ["Week 1", "Week 2", "Week 3", "Week 4"];
+
+  // Spend vs Leads
+  new Chart(document.getElementById("spendLeadsChart"), {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "Spend (RM)",
+          data: [2800, 3100, 2900, 3650],
+          borderWidth: 2,
+          tension: 0.3
+        },
+        {
+          label: "Leads",
+          data: [72, 84, 76, 96],
+          borderWidth: 2,
+          tension: 0.3
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "bottom"
+        }
+      }
+    }
+  });
+
+  // CPL over time
+  new Chart(document.getElementById("cplChart"), {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "CPL (RM)",
+          data: [38, 37, 39, 36],
+          borderWidth: 2,
+          tension: 0.3
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "bottom"
+        }
+      }
+    }
+  });
+</script>
 
 </body>
 </html>
