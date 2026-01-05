@@ -17,42 +17,38 @@
 
   <!-- KPI Section -->
   <section class="kpi-grid">
-    <div class="kpi-card">
-      <span class="kpi-label">Total Spend</span>
-      <span class="kpi-value">RM 12,450</span>
-    </div>
-    <div class="kpi-card">
-      <span class="kpi-label">Total Leads</span>
-      <span class="kpi-value">328</span>
-    </div>
-    <div class="kpi-card">
-      <span class="kpi-label">Avg CPL</span>
-      <span class="kpi-value">RM 37.95</span>
-    </div>
-    <div class="kpi-card">
-      <span class="kpi-label">Conversions</span>
-      <span class="kpi-value">96</span>
-    </div>
-  </section>
+  {% for kpi in kpis %}
+  <div class="kpi-card">
+    <span class="kpi-label">{{ kpi.label }}</span>
+    <span class="kpi-value">{{ kpi.value }}</span>
+  </div>
+  {% endfor %}
+</section>
 
   <!-- Filters -->
   <section class="filters">
-    <select>
-      <option>Date Range</option>
-      <option>Last 7 Days</option>
-      <option>Last 30 Days</option>
-    </select>
+  <select>
+    <option>Date Range</option>
+    {% for option in filters.date_range %}
+    <option>{{ option }}</option>
+    {% endfor %}
+  </select>
 
-    <select>
-      <option>Platform</option>
-      <option>Meta</option>
-      <option>Google</option>
-    </select>
+  <select>
+    <option>Platform</option>
+    {% for option in filters.platform %}
+    <option>{{ option }}</option>
+    {% endfor %}
+  </select>
 
-    <select>
-      <option>Campaign</option>
-    </select>
-  </section>
+  <select>
+    <option>Campaign</option>
+    {% for option in filters.campaign %}
+    <option>{{ option }}</option>
+    {% endfor %}
+  </select>
+</section>
+
 
   <!-- Charts -->
   <section class="charts">
@@ -81,30 +77,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Foundation in Business</td>
-          <td>Google</td>
-          <td>RM 3,200</td>
-          <td>82</td>
-          <td>RM 39.02</td>
-        </tr>
-        <tr>
-          <td>Foundation in Science</td>
-          <td>Meta</td>
-          <td>RM 2,100</td>
-          <td>54</td>
-          <td>RM 38.89</td>
-        </tr>
-      </tbody>
+  {% for row in campaigns %}
+  <tr>
+    <td>{{ row.campaign }}</td>
+    <td>{{ row.platform }}</td>
+    <td>{{ row.spend }}</td>
+    <td>{{ row.leads }}</td>
+    <td>{{ row.cpl }}</td>
+  </tr>
+  {% endfor %}
+</tbody>
     </table>
   </section>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
-  // Dummy data (will come from Flask later)
-  const labels = ["Week 1", "Week 2", "Week 3", "Week 4"];
-
-  // Spend vs Leads
+  const labels = {{ chart_data.labels | tojson }};
+  
   new Chart(document.getElementById("spendLeadsChart"), {
     type: "line",
     data: {
@@ -112,13 +100,13 @@
       datasets: [
         {
           label: "Spend (RM)",
-          data: [2800, 3100, 2900, 3650],
+          data: {{ chart_data.spend | tojson }},
           borderWidth: 2,
           tension: 0.3
         },
         {
           label: "Leads",
-          data: [72, 84, 76, 96],
+          data: {{ chart_data.leads | tojson }},
           borderWidth: 2,
           tension: 0.3
         }
@@ -126,15 +114,10 @@
     },
     options: {
       responsive: true,
-      plugins: {
-        legend: {
-          position: "bottom"
-        }
-      }
+      plugins: { legend: { position: "bottom" } }
     }
   });
 
-  // CPL over time
   new Chart(document.getElementById("cplChart"), {
     type: "line",
     data: {
@@ -142,7 +125,7 @@
       datasets: [
         {
           label: "CPL (RM)",
-          data: [38, 37, 39, 36],
+          data: {{ chart_data.cpl | tojson }},
           borderWidth: 2,
           tension: 0.3
         }
@@ -150,14 +133,11 @@
     },
     options: {
       responsive: true,
-      plugins: {
-        legend: {
-          position: "bottom"
-        }
-      }
+      plugins: { legend: { position: "bottom" } }
     }
   });
 </script>
+
 
 </body>
 </html>
