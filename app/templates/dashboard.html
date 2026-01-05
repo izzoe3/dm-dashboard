@@ -3,24 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <title>Digital Marketing Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <h1>Digital Marketing Dashboard</h1>
 
-  <section>
-    <div>Total Spend</div>
-    <div>Total Leads</div>
-    <div>Avg CPL</div>
-    <div>Conversions</div>
+  <!-- Header -->
+  <header class="header">
+    <h1>Digital Marketing Dashboard</h1>
+    <p>Meta & Google Ads Performance</p>
+  </header>
+
+  <!-- KPI Section -->
+  <section class="kpi-grid">
+    <div class="kpi-card">
+      <span class="kpi-label">Total Spend</span>
+      <span class="kpi-value">RM 12,450</span>
+    </div>
+    <div class="kpi-card">
+      <span class="kpi-label">Total Leads</span>
+      <span class="kpi-value">328</span>
+    </div>
+    <div class="kpi-card">
+      <span class="kpi-label">Avg CPL</span>
+      <span class="kpi-value">RM 37.95</span>
+    </div>
+    <div class="kpi-card">
+      <span class="kpi-label">Conversions</span>
+      <span class="kpi-value">96</span>
+    </div>
   </section>
 
-  <section>
-    Charts go here
-  </section>
-
-  <section>
-    Table goes here
-  </section>
-</body>
-</html>
+  <!-- Filters -->
+  <section class="filters">
+    <select>
+      <o

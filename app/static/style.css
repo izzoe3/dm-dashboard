@@ -1,4 +1,122 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f7fa;
+  color: #1f2933;
   padding: 24px;
+}
+
+/* Header */
+.header {
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.header p {
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* KPI Grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.kpi-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.kpi-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.kpi-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 6px;
+  display: block;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.filters select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: white;
+}
+
+/* Charts */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.chart-placeholder {
+  height: 260px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+/* Table */
+.table-section {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.table-section h2 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+thead {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th, td {
+  padding: 10px 8px;
+  text-align: left;
+}
+
+tbody tr:not(:last-child) {
+  border-bottom: 1px solid #f1f5f9;
 }
